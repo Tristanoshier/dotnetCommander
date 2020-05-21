@@ -1,0 +1,5 @@
+/Users/tristanoshier/Documents/personal projects/Commander/obj/Debug/netcoreapp3.1/Commander.csprojAssemblyReference.cache
+/Users/tristanoshier/Documents/personal projects/Commander/obj/Debug/netcoreapp3.1/Commander.AssemblyInfoInputs.cache
+/Users/tristanoshier/Documents/personal projects/Commander/obj/Debug/netcoreapp3.1/Commander.AssemblyInfo.cs
+/Users/tristanoshier/Documents/personal projects/Commander/obj/Debug/netcoreapp3.1/Commander.csproj.CoreCompileInputs.cache
+/Users/tristanoshier/Documents/personal projects/Commander/obj/Debug/netcoreapp3.1/Commander.MvcApplicationPartsAssemblyInfo.cache
