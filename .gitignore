@@ -1,2 +1,8 @@
+# files
+
 /appsettings.json
 /appsettings.Development.json
+
+# folders
+
+bin/
