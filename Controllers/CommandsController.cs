@@ -40,5 +40,16 @@ namespace Commander.Controllers
             } 
             return NotFound();
         }
+
+        //POST api/commands
+        [HttpPost]
+        public ActionResult <CommandCreateDto> CreateCommand(CommandCreateDto commandCreateDto)
+        {
+            var commandModel = _mapper.Map<Command>(commandCreateDto);
+            _repository.CreateCommand(commandModel);
+            _repository.SaveChanges();
+
+            return Ok(commandModel);
+        }
     } 
 }
