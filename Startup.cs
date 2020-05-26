@@ -19,6 +19,7 @@ namespace Commander
 {
     public class Startup
     {
+        //This gives us access to the configuration API
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
