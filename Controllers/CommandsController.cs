@@ -92,7 +92,7 @@ namespace Commander.Controllers
             }
 
             _mapper.Map(commandToPatch, commandModelFromRepo);
-
+ 
              _repository.UpdateCommand(commandModelFromRepo);
 
             _repository.SaveChanges();
