@@ -18,8 +18,10 @@ namespace Commander.Data
             _context = context;
         }
 
+        // (POST) allows user to create a command in the database
         public void CreateCommand(Command cmd)
         {
+            //This checks if all fields are entered, if not it will throw an error saying you havent filled out a specific field
             if(cmd == null)
             {
                 throw new ArgumentNullException(nameof(cmd));
@@ -27,7 +29,8 @@ namespace Commander.Data
 
             _context.Commands.Add(cmd);
         }
-
+        
+        // (DELETE)
         public void DeleteCommand(Command cmd)
         {
             if(cmd == null)
@@ -38,23 +41,25 @@ namespace Commander.Data
             _context.Commands.Remove(cmd);
         }
 
-        //returns all commands from our database in a list
+        // (GET) returns all commands from our database in a list
         public IEnumerable<Command> GetAllCommands()
         {
             return _context.Commands.ToList();
         }
 
-        //return a command that matches the id requested 
+        // (GET) return a command that matches the id requested 
         public Command GetCommandById(int id)
         {
             return _context.Commands.FirstOrDefault(p => p.Id == id);
         }
 
+        //This method makes sure any POST, PUT, PATCH, and DELELTE methods get applied to the database
         public bool SaveChanges()
         {
             return (_context.SaveChanges() >= 0);
         }
 
+        // (PUT & PATCH)
         public void UpdateCommand(Command cmd)
         {
             //Nothing
