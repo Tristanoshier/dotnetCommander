@@ -14,8 +14,8 @@ namespace Commander.Profiles
             //         Source -> Target
             CreateMap<Command, CommandReadDto>(); //This maps our Command model to our CommandReadDto (GET requests)
             CreateMap<CommandCreateDto, Command>(); //This maps our CommandCreateDto to our Command model (POST request)
-            CreateMap<CommandUpdateDto, Command>(); 
-            CreateMap<Command, CommandUpdateDto>();
+            CreateMap<CommandUpdateDto, Command>(); //This maps our CommandUpdateDto to our Command model (PUT request)
+            CreateMap<Command, CommandUpdateDto>(); //This maps our Command Model to our CommandUpdateDto (PATCH request)
         }
     }
 }

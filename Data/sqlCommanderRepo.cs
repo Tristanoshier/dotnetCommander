@@ -63,6 +63,7 @@ namespace Commander.Data
         public void UpdateCommand(Command cmd)
         {
             //Nothing
+            //We dont need to implement anything since the PUT and PATCH methods are handled by our DB context
         }
     }
 }
