@@ -15,7 +15,7 @@ namespace Commander.Controllers
     public class CommandsController : ControllerBase //We inherit from this base class since our application doesnt have a view. We could inherit from Controller if we had a view
     {
         private readonly ICommanderRepo _repository; //this makes an instance of our interface and stores it in a private variable
-        private readonly IMapper _mapper;
+        private readonly IMapper _mapper; //this makes an instance of IMapper from our AutoMapper dependecy 
 
         public CommandsController(ICommanderRepo repository, IMapper mapper)
         {
@@ -29,7 +29,7 @@ namespace Commander.Controllers
         {
             var commandItems = _repository.GetAllCommands(); //variable contains our command items from our repository
             
-            return Ok(_mapper.Map<IEnumerable<CommandReadDto>>(commandItems));
+            return Ok(_mapper.Map<IEnumerable<CommandReadDto>>(commandItems));  //returns data in our CommandReadDto format and returns a 200 OK
         }
 
         //GET api/commands/{id}
@@ -38,10 +38,10 @@ namespace Commander.Controllers
         {
             var commandItem = _repository.GetCommandById(id); //variable contains our command item from our repository
 
-            //This statement checks if the item id exists or not
+            //This statement checks if the item id exists or not, if it doesnt exist, it will return a 404 Not Found
             if(commandItem != null)
             {
-                return Ok(_mapper.Map<CommandReadDto>(commandItem));
+                return Ok(_mapper.Map<CommandReadDto>(commandItem)); //returns data in our CommandReadDto format and returns a 200 OK
             } 
             return NotFound();
         }

@@ -9,8 +9,10 @@ namespace Commander.Data
     public class SqlCommanderRepo : ICommanderRepo // this will throw you and error until you implement the methods in your ICommanderRepo. 
     {
         // to implement your methods use Cmd . on Mac (Ctrl . on Windows)
+        //generate readonly field
         private readonly CommanderContext _context;
 
+        //we store an instance of CommanderContext in a varaiable so we can interact with our database
         public SqlCommanderRepo(CommanderContext context)
         {
             _context = context;
@@ -36,11 +38,13 @@ namespace Commander.Data
             _context.Commands.Remove(cmd);
         }
 
+        //returns all commands from our database in a list
         public IEnumerable<Command> GetAllCommands()
         {
             return _context.Commands.ToList();
         }
 
+        //return a command that matches the id requested 
         public Command GetCommandById(int id)
         {
             return _context.Commands.FirstOrDefault(p => p.Id == id);

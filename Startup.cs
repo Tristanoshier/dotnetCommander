@@ -37,6 +37,7 @@ namespace Commander
                 s.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
             });
 
+            //This allows us to use AutoMapper throughout the rest of our application
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             // services.AddScoped<ICommanderRepo, MockCommanderRepo>(); this was for our sample data    
