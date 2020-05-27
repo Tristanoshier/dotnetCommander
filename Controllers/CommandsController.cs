@@ -43,12 +43,12 @@ namespace Commander.Controllers
             {
                 return Ok(_mapper.Map<CommandReadDto>(commandItem)); //returns data in our CommandReadDto format and returns a 200 OK
             } 
-            return NotFound();
+            return NotFound(); //returns 404 Not Found
         }
 
         //POST api/commands
         [HttpPost]
-        public ActionResult <CommandCreateDto> CreateCommand(CommandCreateDto commandCreateDto)
+        public ActionResult <CommandReadDto> CreateCommand(CommandCreateDto commandCreateDto)
         {
             var commandModel = _mapper.Map<Command>(commandCreateDto);
             _repository.CreateCommand(commandModel);
@@ -67,15 +67,15 @@ namespace Commander.Controllers
             var commandModelFromRepo = _repository.GetCommandById(id);
             if(commandModelFromRepo == null)
             {
-                return NotFound();
+                return NotFound();  //returns 404 Not Found if command id does not exist
             }
             _mapper.Map(commandUpdateDto, commandModelFromRepo);
 
             _repository.UpdateCommand(commandModelFromRepo);
 
-            _repository.SaveChanges();
+            _repository.SaveChanges(); //this makes sure that the command created gets saved in our database
 
-            return NoContent();
+            return NoContent(); //returns 204 response
         }
 
         //PATCH api/commands/{id}
@@ -85,7 +85,7 @@ namespace Commander.Controllers
             var commandModelFromRepo = _repository.GetCommandById(id);
             if(commandModelFromRepo == null)
             {
-                return NotFound();
+                return NotFound(); //returns 404 Not Found if command id does not exist
             }
 
             var commandToPatch = _mapper.Map<CommandUpdateDto>(commandModelFromRepo);
@@ -100,9 +100,9 @@ namespace Commander.Controllers
  
              _repository.UpdateCommand(commandModelFromRepo);
 
-            _repository.SaveChanges();
+            _repository.SaveChanges(); //this makes sure that the command created gets saved in our database
 
-            return NoContent();
+            return NoContent(); //returns 204 response
         }
 
         //DELETE api/commands/{id}
@@ -113,13 +113,13 @@ namespace Commander.Controllers
             var commandModelFromRepo = _repository.GetCommandById(id);
             if(commandModelFromRepo == null)
             {
-                return NotFound();
+                return NotFound(); //returns 404 not found if command does not exist (null)
             }
 
             _repository.DeleteCommand(commandModelFromRepo);
-            _repository.SaveChanges();
+            _repository.SaveChanges(); //this makes sure that the command created gets saved in our database
 
-            return NoContent();
+            return NoContent(); //returns 204 response
         }
     } 
 }
