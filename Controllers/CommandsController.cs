@@ -52,10 +52,11 @@ namespace Commander.Controllers
         {
             var commandModel = _mapper.Map<Command>(commandCreateDto);
             _repository.CreateCommand(commandModel);
-            _repository.SaveChanges();
+            _repository.SaveChanges(); //this makes sure that the command created gets saved in our database
 
             var commandReadDto = _mapper.Map<CommandReadDto>(commandModel);
             
+            //this returns a specific route for the command with a unique id. This also returns a 201 Created response
             return CreatedAtRoute(nameof(GetCommandById), new {Id = commandReadDto.Id}, commandReadDto);
         }
 
