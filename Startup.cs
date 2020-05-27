@@ -30,6 +30,7 @@ namespace Commander
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //This line connects to our postreSQL database
             services.AddDbContext<CommanderContext>(opt => opt.UseNpgsql(Configuration.GetConnectionString("CommanderConnection")));
 
             services.AddControllers().AddNewtonsoftJson(s => {
@@ -39,6 +40,7 @@ namespace Commander
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             // services.AddScoped<ICommanderRepo, MockCommanderRepo>(); this was for our sample data    
+            //tells application when using the interface, to connect to the sqlCommander repository
             services.AddScoped<ICommanderRepo, SqlCommanderRepo>();
         }
 

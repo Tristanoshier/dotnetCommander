@@ -1,3 +1,5 @@
+// This is the only controller in our application. This handles all of our CRUD method routes and the actions they will perform.
+
 using Microsoft.AspNetCore.Mvc;
 using Commander.Models;
 using System.Collections.Generic;
@@ -8,24 +10,24 @@ using Microsoft.AspNetCore.JsonPatch;
 
 namespace Commander.Controllers 
 {
-    [Route("api/commands")]
-    [ApiController]
+    [Route("api/commands")] //This will be our base route for our api endpoints
+    [ApiController] //This allows us to use Http methods
     public class CommandsController : ControllerBase //We inherit from this base class since our application doesnt have a view. We could inherit from Controller if we had a view
     {
-        private readonly ICommanderRepo _repository;
+        private readonly ICommanderRepo _repository; //this makes an instance of our interface and stores it in a private variable
         private readonly IMapper _mapper;
 
         public CommandsController(ICommanderRepo repository, IMapper mapper)
         {
-            _repository = repository;
-            _mapper = mapper;
+            _repository = repository; //when you set this up, you will have to generate a readonly field for _repository which is located above
+            _mapper = mapper; //when you set this up, you will have to generate a readonly field for _mapper which is located above
         }
 
         //GET api/commands
         [HttpGet]
         public ActionResult <IEnumerable<CommandReadDto>> GetAllCommands()
         {
-            var commandItems = _repository.GetAllCommands();
+            var commandItems = _repository.GetAllCommands(); //variable contains our command items from our repository
             
             return Ok(_mapper.Map<IEnumerable<CommandReadDto>>(commandItems));
         }
@@ -34,7 +36,9 @@ namespace Commander.Controllers
         [HttpGet("{id}", Name="GetCommandById")]
         public ActionResult <CommandReadDto> GetCommandById(int id)
         {
-            var commandItem = _repository.GetCommandById(id);
+            var commandItem = _repository.GetCommandById(id); //variable contains our command item from our repository
+
+            //This statement checks if the item id exists or not
             if(commandItem != null)
             {
                 return Ok(_mapper.Map<CommandReadDto>(commandItem));
