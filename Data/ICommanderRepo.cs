@@ -1,4 +1,5 @@
 //This is our interface or contract for our application. This file holds a list of the methods that we are using in this application (GET, POST, PUT, PATCH, DELETE)
+//An inteface is like a contract. You cant break the rules of this contract if youre implementing this interface in your other repositories. 
 
 using Commander.Models;
 using System.Collections.Generic;

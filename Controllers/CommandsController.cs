@@ -10,7 +10,7 @@ namespace Commander.Controllers
 {
     [Route("api/commands")]
     [ApiController]
-    public class CommandsController : ControllerBase
+    public class CommandsController : ControllerBase //We inherit from this base class since our application doesnt have a view. We could inherit from Controller if we had a view
     {
         private readonly ICommanderRepo _repository;
         private readonly IMapper _mapper;

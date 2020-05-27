@@ -5,8 +5,10 @@ using Commander.Models;
 
 namespace Commander.Data
 {
-    public class SqlCommanderRepo : ICommanderRepo
+    //We are implementing our interface into our repository
+    public class SqlCommanderRepo : ICommanderRepo // this will throw you and error until you implement the methods in your ICommanderRepo. 
     {
+        // to implement your methods use Cmd . on Mac (Ctrl . on Windows)
         private readonly CommanderContext _context;
 
         public SqlCommanderRepo(CommanderContext context)
