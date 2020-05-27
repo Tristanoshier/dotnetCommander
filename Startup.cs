@@ -33,6 +33,8 @@ namespace Commander
             //This line connects to our postreSQL database
             services.AddDbContext<CommanderContext>(opt => opt.UseNpgsql(Configuration.GetConnectionString("CommanderConnection")));
 
+
+            //add newtonsoft onto controllers to allow for a PATCH request
             services.AddControllers().AddNewtonsoftJson(s => {
                 s.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
             });
